@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ИИ Преподаватель</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Левая секция с чатом и вводом -->
+        <div class="left-section">
+            <h1>ИИ Преподаватель</h1>
+            <div id="chatHistory" class="chat-history"></div>
+            <textarea id="inputText" placeholder="Введите ваш вопрос здесь..."></textarea>
+            <div class="button-container">
+                <button onclick="convertToSpeech()">Отправить</button>
+                <button onclick="openFAQModal()">Часто задаваемые вопросы</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Контейнер с видео -->
+    <div class="video-container">
+        <video id="idleVideo" autoplay loop muted>
+            <source src="{{ url_for('static', filename='videoCycles.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video id="activeVideo" muted style="display: none;" loop>
+            <source src="{{ url_for('static', filename='Video1.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Модальное окно FAQ -->
+    <div id="faqModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeFAQModal()">&times;</span>
+            <h2>Часто задаваемые вопросы</h2>
+            <div id="faqList" class="faq-list"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
